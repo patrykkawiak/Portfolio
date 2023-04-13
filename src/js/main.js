@@ -100,14 +100,13 @@ const handleFirstReval = () => {
 
 	if (revalSection.offsetTop - window.scrollY < window.innerHeight - 150) {
 		revalSection.classList.add('reval');
+		setTimeout(writingAnimation, 500);
 	}
 };
 const handleSecondReval = () => {
-
-		setTimeout( ()=> {
-			revalSection[1].classList.add('reval');
-		},400)
-	
+	setTimeout(() => {
+		revalSection[1].classList.add('reval');
+	}, 1000);
 };
 const handleReval = () => {
 	revalSection.forEach((sec) => {
@@ -116,6 +115,30 @@ const handleReval = () => {
 		}
 	});
 };
+
+// typing
+const text = document.querySelector('.typing-text');
+const typingBar = document.querySelector('.typing-bar');
+let inputValue = 'Front End Developer';
+let timeout;
+let index = 1;
+let aniSpeed = 90;
+
+const writingAnimation = () => {
+	text.innerHTML = inputValue.slice(0, index);
+	index++;
+	if (index > inputValue.length) return;
+	timeout = setTimeout(writingAnimation, aniSpeed);
+};
+
+const barAnimation = () => {
+	typingBar.style.display = 'none';
+	setTimeout(() => {
+		typingBar.style.display = 'inline';
+	}, 500);
+};
+
+setInterval(barAnimation, 1000);
 
 window.addEventListener('scroll', handleReval);
 window.addEventListener('DOMContentLoaded', handleFirstReval);

@@ -5,7 +5,7 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-// EFA332
+
 
 html {
 	font-size: 62.5%;
@@ -17,10 +17,11 @@ body {
 	background-color: rgb(15, 15, 15);
 	color: white;
 }
-/* width */
+
 body::-webkit-scrollbar {
 	width: 10px;
 	height: 10px;
+	border-radius: 30px;
 }
 
 /* Track */
@@ -732,6 +733,7 @@ footer {
 	}
 
 	header {
+	
 		.header-container {
 			padding: 10rem 4rem;
 			flex-direction: row;
@@ -825,8 +827,25 @@ footer {
 
 @media (min-width: 1300px) {
 	.contact {
+
 		img {
 			width: 40%;
+		}
+	}
+}
+@media (min-width: 1400px) {
+	.contact {
+
+		img {
+			width: 37%;
+		}
+	}
+}
+@media (min-width: 1500px) {
+	.contact {
+
+		img {
+			width: 34%;
 		}
 	}
 }
