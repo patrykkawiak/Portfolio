@@ -132,11 +132,60 @@ const writingAnimation = () => {
 };
 
 const barAnimation = () => {
-	typingBar.style.display = 'none';
+	typingBar.style.opacity = 0;
 	setTimeout(() => {
-		typingBar.style.display = 'inline';
+		typingBar.style.opacity = 1;
 	}, 500);
 };
+
+// button eff
+const animatedBtn = document.querySelectorAll('.animated-btn');
+
+const effect = (e) => {
+	const rect = e.target.getBoundingClientRect();
+
+	const x = e.target.offsetWidth - (e.clientX - rect.left);
+	console.log(x);
+	const y = e.target.offsetHeight - (e.clientY - rect.top);
+
+	e.target.style.setProperty('--mouse-x', `${x}px`);
+	e.target.style.setProperty('--mouse-y', `${y}px`);
+};
+
+animatedBtn.forEach((btn) => btn.addEventListener('mousemove', effect));
+
+// animated img
+
+const image = document.querySelector('.image');
+
+const rotatingImg = (e) => {
+	if (e.target.classList.contains('reset-pos')) {
+		e.target.classList.remove('reset-pos');
+	}
+
+	let x;
+	let y;
+	x = e.offsetX;
+	y = e.offsetY;
+
+	const middleX = e.target.offsetWidth / 2;
+	const middleY = e.target.offsetHeight / 2;
+
+	const finalX = (middleX - x) / 10;
+	const finalY = (middleY - y) / 10;
+
+	e.target.style.setProperty('--transform-y', `${Math.floor(finalX)}deg`);
+	e.target.style.setProperty('--transform-x', `${Math.floor(finalY)}deg`);
+};
+
+
+image.addEventListener('mousemove', rotatingImg)
+image.addEventListener('mouseout', (e) => {
+	console.log(e.target);
+	e.target.classList.add('reset-pos');
+
+
+})
 
 setInterval(barAnimation, 1000);
 
