@@ -92,6 +92,10 @@ body::-webkit-scrollbar-thumb:hover {
 	animation: resetPos 0.3s forwards;
 }
 
+.add-pos {
+	animation: addPos 0.3s forwards;
+}
+
 
 .mobile {
 	.mobile-nav {
@@ -964,8 +968,21 @@ footer {
 }
 
 @keyframes resetPos {
-	to {
-		transform: rotateX(0deg) rotateY(0deg);
-	}
-}
 
+	  to {
+		  transform: rotateX(0deg) rotateY(0deg);
+	  }
+  }
+  
+
+  
+  @keyframes addPos {
+	from {
+	  transform: rotateX(0deg) rotateY(0deg);
+	}
+	  to {
+			  transform: rotateX(var(--transform-x)) rotateY(var(--transform-y));
+	  }
+  }
+  
+  

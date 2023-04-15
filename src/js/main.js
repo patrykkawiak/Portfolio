@@ -162,6 +162,10 @@ const rotatingImg = (e) => {
 	if (e.target.classList.contains('reset-pos')) {
 		e.target.classList.remove('reset-pos');
 	}
+  
+		e.target.classList.add('add-pos');
+	
+ 
 
 	let x;
 	let y;
@@ -180,8 +184,8 @@ const rotatingImg = (e) => {
 
 image.addEventListener('mousemove', rotatingImg);
 image.addEventListener('mouseout', (e) => {
-	console.log(e.target);
 	e.target.classList.add('reset-pos');
+  	e.target.classList.remove('add-pos');
 });
 
 setInterval(barAnimation, 1000);
