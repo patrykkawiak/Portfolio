@@ -19,21 +19,17 @@ body {
 
 body::-webkit-scrollbar {
 	width: 10px;
-	height: 10px;
-	border-radius: 30px;
 }
 
-/* Track */
 body::-webkit-scrollbar-track {
 	background: #000000;
 }
 
-/* Handle */
 body::-webkit-scrollbar-thumb {
 	background: rgb(189, 189, 189);
+	border-radius: 30px;
 }
 
-/* Handle on hover */
 body::-webkit-scrollbar-thumb:hover {
 	background: #ba7f26;
 }
@@ -86,6 +82,16 @@ body::-webkit-scrollbar-thumb:hover {
 	opacity: 0;
 	transition: opacity 0.2s;
 }
+.image {
+	transform-style: preserve-3d;
+	transform: rotateX(var(--transform-x)) rotateY(var(--transform-y));
+	cursor: grabbing;
+}
+
+.reset-pos {
+	animation: resetPos 0.3s forwards;
+}
+
 
 .mobile {
 	.mobile-nav {
@@ -241,12 +247,12 @@ header {
 .about {
 	opacity: 0;
 	width: 100%;
-	
+
 	.about-container {
 		display: flex;
 		flex-direction: column-reverse;
 		gap: 6rem;
-		
+
 		.about-img {
 			perspective: 500px;
 			display: flex;
@@ -611,6 +617,22 @@ header {
 					border: 2px solid #efa332;
 				}
 
+				textarea::-webkit-scrollbar {
+					width: 9px;
+				}
+
+				textarea::-webkit-scrollbar-track {
+					background: #00000000;
+				}
+
+				textarea::-webkit-scrollbar-thumb {
+					background: rgb(189, 189, 189);
+					border-radius: 30px;
+				}
+				textarea::-webkit-scrollbar-thumb:hover {
+					background: #ba7f26;
+				}
+
 				.area_label {
 					position: absolute;
 					font-size: 1.5rem;
@@ -947,13 +969,3 @@ footer {
 	}
 }
 
-
-.image {
-	transform-style: preserve-3d;
-	transform: rotateX(var(--transform-x)) rotateY(var(--transform-y));
-	cursor: grabbing;
-}
-
-.reset-pos {
-	animation: resetPos .3s forwards ;
-}

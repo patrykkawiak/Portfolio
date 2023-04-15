@@ -88,7 +88,7 @@ const sendMail = () => {
 	const title = document.querySelector('.title').value;
 	const message = document.querySelector('.message').value;
 	const name = document.querySelector('.name').value;
-	window.location.href = `mailto:patryk.kawiak@icloud.com?subject=${title}&body=${message}, 
+	window.location.href = `mailto:patryk.kawiak@icloud.com?subject=${title}&body=${message}, Pozdrawiam 
 	${name}`;
 };
 
@@ -178,14 +178,11 @@ const rotatingImg = (e) => {
 	e.target.style.setProperty('--transform-x', `${Math.floor(finalY)}deg`);
 };
 
-
-image.addEventListener('mousemove', rotatingImg)
+image.addEventListener('mousemove', rotatingImg);
 image.addEventListener('mouseout', (e) => {
 	console.log(e.target);
 	e.target.classList.add('reset-pos');
-
-
-})
+});
 
 setInterval(barAnimation, 1000);
 
