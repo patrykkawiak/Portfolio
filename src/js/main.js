@@ -2,11 +2,19 @@
 
 const burger = document.querySelector('.mobile__burger');
 const mobileMenu = document.querySelector('.mobile__menu');
+const navLinks = document.querySelectorAll('.mobile__menu--link');
 
 const handleNav = () => {
 	mobileMenu.classList.toggle('active-nav');
+	burger.classList.toggle('active-burger');
 };
 
+const handleCloseNav = () => {
+	mobileMenu.classList.remove('active-nav');
+	burger.classList.remove('active-burger');
+}
+
+navLinks.forEach(link => link.addEventListener('click', handleCloseNav))
 burger.addEventListener('click', handleNav);
 
 // slider
