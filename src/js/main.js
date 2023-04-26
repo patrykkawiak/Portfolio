@@ -196,6 +196,11 @@ image.addEventListener('mouseout', (e) => {
   	e.target.classList.remove('add-pos');
 });
 
+
+
+
+
+
 setInterval(barAnimation, 1000);
 
 window.addEventListener('scroll', handleReval);
@@ -206,3 +211,5 @@ sendBtn.addEventListener('click', sendMail);
 document.addEventListener('DOMContentLoaded', createAllDots);
 nextBtn.addEventListener('click', nextSlide);
 prevBtn.addEventListener('click', prevSlide);
+
+
