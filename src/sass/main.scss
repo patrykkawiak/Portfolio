@@ -468,18 +468,19 @@ header {
 					color: rgb(189, 189, 189);
 					font-size: 1.2rem;
 				}
-				.visit-btn {
-					width: 10rem;
-					height: 4rem;
-					padding: 0.5rem 1rem;
-					font-size: 1.2rem;
-					display: flex;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					a {
-						text-decoration: none;
-						color: #fff;
+				.buttons {
+				display: flex;
+				gap: 1rem;
+					.visit-btn {
+						padding: .8rem 1.2rem;
+						font-size: 1rem;
+						display: flex;
+						gap: .5rem;
+						justify-content: center;
+						align-items: center;
+						i {
+							font-size: 1.8rem;
+						}
 					}
 				}
 			}

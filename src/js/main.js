@@ -12,9 +12,9 @@ const handleNav = () => {
 const handleCloseNav = () => {
 	mobileMenu.classList.remove('active-nav');
 	burger.classList.remove('active-burger');
-}
+};
 
-navLinks.forEach(link => link.addEventListener('click', handleCloseNav))
+navLinks.forEach((link) => link.addEventListener('click', handleCloseNav));
 burger.addEventListener('click', handleNav);
 
 // slider
@@ -57,10 +57,10 @@ const nextSlide = () => {
 			projects[n].classList.add('animation-rev');
 			setTimeout(() => {
 				projects[n].classList.remove('animation-rev');
+				projects[n].classList.remove('active');
+				projects[n + 1].classList.add('active');
 				dotsArr[n].classList.remove('active-dot');
 				dotsArr[n + 1].classList.add('active-dot');
-				projects[n + 1].classList.add('active');
-				projects[n].classList.remove('active');
 				projects[n + 1].classList.add('animation');
 				n++;
 			}, speed);
@@ -70,7 +70,6 @@ const nextSlide = () => {
 	}
 };
 const prevSlide = () => {
-	console.log(n);
 	if (n > 0) {
 		if (projects[n].classList.contains('active')) {
 			projects[n].classList.add('animation-rev');
@@ -89,15 +88,18 @@ const prevSlide = () => {
 	}
 };
 
-// mail
 const sendBtn = document.querySelector('.send-btn');
-
-const sendMail = () => {
+const sendMail = (e) => {
+	e.preventDefault();
 	const title = document.querySelector('.title').value;
 	const message = document.querySelector('.message').value;
 	const name = document.querySelector('.name').value;
-	window.location.href = `mailto:patryk.kawiak@icloud.com?subject=${title}&body=${message}, Pozdrawiam 
-	${name}`;
+	if (title === '' || message === '' || name === '') {
+		console.log('siema');
+	} else {
+		window.location.href = `mailto:patryk.kawiak@icloud.com?subject=${title}&body=${message}, Pozdrawiam 
+		${name}`;
+	}
 };
 
 // scroll
@@ -153,7 +155,6 @@ const effect = (e) => {
 	const rect = e.target.getBoundingClientRect();
 
 	const x = e.target.offsetWidth - (e.clientX - rect.left);
-	console.log(x);
 	const y = e.target.offsetHeight - (e.clientY - rect.top);
 
 	e.target.style.setProperty('--mouse-x', `${x}px`);
@@ -170,10 +171,8 @@ const rotatingImg = (e) => {
 	if (e.target.classList.contains('reset-pos')) {
 		e.target.classList.remove('reset-pos');
 	}
-  
-		e.target.classList.add('add-pos');
-	
- 
+
+	e.target.classList.add('add-pos');
 
 	let x;
 	let y;
@@ -193,13 +192,8 @@ const rotatingImg = (e) => {
 image.addEventListener('mousemove', rotatingImg);
 image.addEventListener('mouseout', (e) => {
 	e.target.classList.add('reset-pos');
-  	e.target.classList.remove('add-pos');
+	e.target.classList.remove('add-pos');
 });
-
-
-
-
-
 
 setInterval(barAnimation, 1000);
 
@@ -211,5 +205,3 @@ sendBtn.addEventListener('click', sendMail);
 document.addEventListener('DOMContentLoaded', createAllDots);
 nextBtn.addEventListener('click', nextSlide);
 prevBtn.addEventListener('click', prevSlide);
-
-
