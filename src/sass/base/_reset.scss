@@ -1,0 +1,64 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  line-height: 1.5em;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 3.5rem;
+  font-size: 62.5%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+@media (min-width: 576px) {
+	html {
+		font-size: 68.75%;
+		scroll-padding-top: 2rem;
+	}
+}
+
+@media (min-width: 768px) {
+	html {
+		font-size: 75%;
+	}
+}
+
+@media (min-width: 992px) {
+	html {
+		font-size: 81.25%;
+	}
+}
+
+@media (min-width: 1200px) {
+	html {
+		font-size: 87.5%;
+	}
+}
+
+@media (min-width: 1400px) {
+	html {
+		font-size: 93.75%;
+	}
+}

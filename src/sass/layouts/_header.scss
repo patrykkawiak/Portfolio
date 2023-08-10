@@ -1,0 +1,66 @@
+.header {
+  padding: 8rem 2rem 4rem;
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  &-heading {
+    font-size: 3.2rem;
+    font-weight: bold;
+  }
+
+  &-img {
+    margin: 0 auto;
+    max-width: 40rem;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding-top: 5rem;
+    padding: 8rem 0rem 4rem 0rem;
+    &-container {
+      overflow-x: hidden;
+      padding: 0 4rem;
+      flex-direction: row;
+      gap: 2rem;
+    }
+    &-content {
+      max-width: 40rem;
+    }
+    &-img {
+      animation: pulse 3s ease-in-out infinite both;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .header {
+    &-container {
+      gap: 4rem;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1)
+  }
+  50% {
+    transform: scale(.9)
+  }
+  100% {
+    transform: scale(1)
+
+  }}

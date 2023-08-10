@@ -1,0 +1,65 @@
+footer {
+	width: 100%;
+	background-color: rgb(22, 22, 22);
+	padding: 2rem 2rem;
+
+	.footer-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+		gap: 4rem;
+
+		.footer-name-ctn {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			align-items: center;
+			.footer-name {
+				font-size: 1.8rem;
+			}
+			.footer-profesion {
+				font-size: 1rem;
+				color: rgb(189, 189, 189);
+			}
+		}
+
+		.footer-contact {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			align-items: center;
+			a {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				color: white;
+				display: flex;
+				font-size: 1.2rem;
+				text-decoration: none;
+				cursor: pointer;
+				transition: color 0.3s;
+				i {
+					font-size: 1.5rem;
+					color: #efa332;
+				}
+			}
+
+			a:hover {
+				color: #efa332;
+			}
+		}
+	}
+}
+
+@media (min-width: 576px) {
+
+	footer {
+		.footer-container {
+			flex-direction: row;
+			.footer-contact {
+				align-items: flex-start;
+			}
+		}
+	}
+}

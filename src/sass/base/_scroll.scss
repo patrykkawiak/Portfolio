@@ -1,0 +1,18 @@
+@use '../abstracts/' as *;
+
+body::-webkit-scrollbar {
+	width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+	background: $bgc-color;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: $gray-text;
+	border-radius: 30px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+	background: $main-color;
+}

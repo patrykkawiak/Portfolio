@@ -1,0 +1,193 @@
+@use "../abstracts/" as *;
+
+.contact {
+  position: relative;
+  margin-top: 4rem;
+  img {
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: -1;
+  }
+
+  &-heading {
+    text-align: center;
+    margin-bottom: 5rem;
+    padding-top: 7rem;
+  }
+
+  &-inputs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form {
+    &-boxes {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4rem;
+
+      .send-btn {
+        padding: 0.7rem 1rem;
+        font-size: 1.4rem;
+        width: 50%;
+        margin-bottom: 3rem;
+        transition: 0.3s;
+      }
+      .send-btn:focus,
+      .send-btn:hover {
+        background-color: $main-color;
+        color: black;
+        outline: none;
+      }
+
+      .form-box {
+        width: 120%;
+        position: relative;
+        .form_input {
+          padding: 1.1em 1.3em 1.1em 1.6em;
+          font-size: 1.2rem;
+          width: 100%;
+          border: 2px solid rgb(96, 96, 96);
+          background-color: transparent;
+          border-radius: 30px;
+          outline: none;
+          transition: border 0.2s;
+          color: white;
+        }
+
+        .form_input:focus {
+          border: 2px solid $main-color;
+        }
+
+        .form_label {
+          position: absolute;
+          font-size: 1.5rem;
+          left: 1.5rem;
+          padding: 0 0.5em;
+          top: -1rem;
+          background-color: $bgc-color;
+          color: #b0b0b0;
+        }
+
+        .form_label-addon {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 1.5rem;
+
+          i {
+            font-size: 2rem;
+          }
+        }
+      }
+
+      .area {
+        width: 120%;
+        position: relative;
+
+        textarea {
+          width: 100%;
+          height: 12rem;
+          resize: none;
+          border: 2px solid rgb(96, 96, 96);
+          border-radius: 30px;
+          padding: 1.5em;
+          outline: none;
+          font-size: 1.3rem;
+          background-color: transparent;
+          color: white;
+        }
+
+        textarea:focus {
+          border: 2px solid $main-color;
+        }
+
+        textarea::-webkit-scrollbar {
+          width: 9px;
+        }
+
+        textarea::-webkit-scrollbar-track {
+          background: #00000000;
+        }
+
+        textarea::-webkit-scrollbar-thumb {
+          background: $gray-text;
+          border-radius: 30px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+          background: #ba7f26;
+        }
+
+        .area_label {
+          position: absolute;
+          font-size: 1.5rem;
+          left: 1.5rem;
+          padding: 0 0.5em;
+          top: -1rem;
+          background-color: rgb(15, 15, 15);
+          color: #b0b0b0;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .contact {
+    img {
+      width: 70%;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .contact {
+    img {
+      width: 55%;
+    }
+  }
+}
+@media (min-width: 992px) {
+  .contact {
+    img {
+      width: 45%;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .contact {
+    img {
+      width: 40%;
+    }
+  }
+}
+
+@media (min-width: 1400px) {
+  .contact {
+    img {
+      width: 37%;
+    }
+  }
+}
+@media (min-width: 1500px) {
+  .contact {
+    img {
+      width: 34%;
+    }
+  }
+}
+@media (min-width: 1800px) {
+  .contact {
+    img {
+      width: 30%;
+    }
+  }
+}

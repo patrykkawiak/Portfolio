@@ -1,0 +1,166 @@
+@use '../abstracts/' as *;
+
+.projects {
+  &-heading {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 7rem;
+  }
+
+  &-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-item {
+      flex-direction: column;
+      gap: 3rem;
+      max-width: 40rem;
+      height: 50rem;
+      display: none;
+      overflow-x: hidden;
+      img {
+        display: none;
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        max-height: 25rem;
+        transform: translateY(-60%) translateX(-60%);
+      }
+      .project-img {
+        height: 60%;
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      .project-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        .project-heading {
+          font-size: 2rem;
+        }
+        .project-desc {
+          color: $gray-text;
+          font-size: 1.2rem;
+        }
+        .buttons {
+          display: flex;
+          gap: 1rem;
+          .visit-btn {
+            padding: 0.8rem 1.2rem;
+            font-size: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            i {
+              font-size: 1.8rem;
+            }
+          }
+        }
+      }
+    }
+    .active {
+      display: flex;
+    }
+    .animation {
+      animation: opa 0.3s linear forwards;
+    }
+    .animation-rev {
+      animation: opaRev 0.3s linear forwards;
+    }
+  }
+
+  .btns {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 5rem;
+
+    .btn {
+      background-color: transparent;
+      color: $main-color;
+      font-size: 3rem;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .btn:hover {
+      transform: scale(1.1);
+    }
+    .dots {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      .dot {
+        height: 1rem;
+        width: 1rem;
+        background-color: #3e3e3e;
+        border-radius: 50%;
+      }
+      .active-dot {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .projects {
+    &-container {
+      &-item {
+        height: 55rem;
+        gap: 5rem;
+      }
+    }
+  }
+}
+@media (min-width: 992px) {
+  .projects {
+    &-container {
+      &-item {
+        height: 25rem;
+        max-width: 100%;
+        flex-direction: row;
+
+        img {
+          display: block;
+        }
+
+        .project-img {
+          height: 100%;
+          width: 40%;
+          background-position: top;
+        }
+
+        .project-content {
+          width: 60%;
+        }
+      }
+    }
+    .btns {
+      margin-top: 0;
+    }
+  }
+}
+
+@keyframes opa {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+@keyframes opaRev {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

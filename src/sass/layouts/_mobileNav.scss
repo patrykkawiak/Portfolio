@@ -1,0 +1,89 @@
+@use "../abstracts/" as *;
+.mobile {
+  &-logo {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0rem 2rem;
+    height: 7rem;
+    background-color: $bg-blur;
+    backdrop-filter: blur(3px);
+    z-index: 30;
+    &-link {
+      font-size: 1.8rem;
+    }
+  }
+  &-burger {
+    position: fixed;
+    top: 1.2rem;
+    right: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 4.5rem;
+    height: 4.5rem;
+    padding: 1rem 1rem;
+    cursor: pointer;
+    z-index: 105;
+
+    &-bar {
+      background-color: rgb(225, 225, 225);
+      width: 100%;
+      height: 2px;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+  }
+
+  .mobile-burger.active .mobile-burger-bar:nth-child(1) {
+    opacity: 0;
+  }
+  .mobile-burger.active .mobile-burger-bar:nth-child(2) {
+    transform: translateY(2px) rotate(45deg);
+  }
+  .mobile-burger.active .mobile-burger-bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  &-menu {
+    position: fixed;
+    z-index: 100;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    right: 0;
+    backdrop-filter: blur(2px);
+    background-color: #050505db;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(105%);
+    padding: 2rem 2rem;
+    gap: 4rem;
+    transition: transform 0.3s;
+    &-link {
+      font-size: 3.5rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      -webkit-text-fill-color: rgb(0, 0, 0);
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: $main-color;
+      transition: 0.3s;
+    }
+    &-link:hover,
+    &-link:active {
+      -webkit-text-fill-color: $main-color;
+    }
+  }
+  .active {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile {
+    display: none;
+  }
+}
