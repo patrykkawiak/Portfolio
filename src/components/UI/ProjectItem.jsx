@@ -1,9 +1,12 @@
 import Color from "./Color";
 import Link from "./Link";
 import Pill from "./Pill";
+import EclipseImg from "../../assets/img/projects-elipse.png";
+import { storage } from "../../firebase-config";
+import { ref, getDownloadURL } from "firebase/storage";
+import { useEffect, useState } from "react";
 
 const ProjectItem = ({
-  bg,
   img,
   colorHeading,
   heading,
@@ -13,10 +16,21 @@ const ProjectItem = ({
   classes,
   tech,
 }) => {
-  const imgUrl = `url(${img})`;
+  const [dbImage, setDbImage] = useState(null);
+
+  const handleLoadImg = async() => {
+    const res = await getDownloadURL(ref(storage, `projects/${img}`));
+    setDbImage(res);
+  }
+  
+  useEffect(() => {
+   handleLoadImg();
+  }, [img]);
+
+  const imgUrl = `url(${dbImage})`;
   return (
-    <div key={heading} className={`projects-container-item ${classes}`}>
-      <img src={bg} alt="background image" />
+    <div key={heading} className={`projects-container-item ${classes}`} >
+      <img src={EclipseImg} alt="background image" />
       <div
         class="project-img"
         style={{ backgroundImage: imgUrl }}
@@ -39,7 +53,7 @@ const ProjectItem = ({
         </h3>
         <p class="project-desc">{desc}</p>
         <div className="flex gap-2 flex-wrap">
-          {tech[0].map((el) => (
+          {tech.map((el) => (
             <Pill classes={el} />
           ))}
         </div>

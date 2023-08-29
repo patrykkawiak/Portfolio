@@ -1,9 +1,9 @@
 import Heading from "../UI/Heading";
 import { useState } from "react";
-import projectStore from "../../store/projects-store";
+// import projectStore from "../../store/projects-store";
 import ProjectItem from "../UI/ProjectItem";
 
-const Projects = () => {
+const Projects = ({projects}) => {
   const [n, setN] = useState(0);
   const speed = 300;
 
@@ -46,13 +46,12 @@ const Projects = () => {
       <div class="wrapper">
         <Heading classes={"projects-heading"}>Projects</Heading>
         <div class="projects-container">
-          {projectStore.map((el) => (
+          {projects.map((el) => (
             <ProjectItem
               key={el.colorHeading}
               classes={el.active ? "active" : ""}
-              bg={el.bg}
               img={el.img}
-              colorHeading={el.colorHeading}
+              colorHeading={el.highlight}
               heading={el.heading}
               desc={el.desc}
               website={el.website}
@@ -66,9 +65,9 @@ const Projects = () => {
             <i class="bx bxs-left-arrow-circle"></i>
           </button>
           <div class="dots">
-            {projectStore.map((el) => (
+            {projects.map((el) => (
               <div
-                key={el.colorHeading}
+                key={el.highlight}
                 className={`dot ${el.active ? "active-dot" : ""}`}
               ></div>
             ))}

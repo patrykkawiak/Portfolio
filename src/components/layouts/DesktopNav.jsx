@@ -10,7 +10,6 @@ const DesktopNav = (params) => {
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user.email);
         setUser(user);
       } else {
         setUser(null);

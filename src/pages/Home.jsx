@@ -1,4 +1,4 @@
-import { useActionData } from "react-router-dom";
+import { useActionData, useLoaderData } from "react-router-dom";
 import AboutUs from "../components/layouts/AboutUs";
 import Contact from "../components/layouts/Contact";
 import DesktopNav from "../components/layouts/DesktopNav";
@@ -10,18 +10,31 @@ import Skills from "../components/layouts/Skills";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { formSliceActions } from "../redux/form-slice";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase-config";
+import { projectsSliceActions } from "../redux/projects-slice";
+// import { storage } from "../firebase-config";
+// import { ref, getDownloadURL} from "firebase/storage";
 
 const HomePage = () => {
   const data = useActionData();
+  const loaderData = useLoaderData();
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     if (data) {
       dispatch(formSliceActions.addMessage(data));
     }
   }, [data]);
+  useEffect(() => {
+    if(loaderData) {
+      dispatch(projectsSliceActions.replaceProjects(loaderData))
+    }
+  },[loaderData])
+  
+  const projects =  useSelector(state => state.projects.projects);
+  console.log(projects);
+
   return (
     <>
       <MobileNav />
@@ -30,7 +43,7 @@ const HomePage = () => {
       <main>
         <AboutUs />
         <Skills />
-        <Projects />
+        <Projects projects={projects}/>
         <Contact />
       </main>
       <Footer />
@@ -53,4 +66,15 @@ export const homeAction = async ({ request }) => {
   await addDoc(collection(db, "messages"), newMessage);
 
   return newMessage;
+};
+
+export const homeLoader = async () => {
+  const querySnapshot = await getDocs(collection(db, "projects"));
+  const projectsArr = [];
+  querySnapshot.forEach((doc) => projectsArr.push(doc.data()));
+  const data = projectsArr.reverse();
+  if (data) {
+    return data;
+  } else {
+  }
 };

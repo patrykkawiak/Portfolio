@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import {
   collection,
   query,
@@ -11,8 +11,6 @@ import {
 import { db } from "../firebase-config";
 import { useEffect, useState } from "react";
 import { formSliceActions } from "../redux/form-slice";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../firebase-config";
 
 const Admin = () => {
   const data = useLoaderData();
@@ -22,29 +20,6 @@ const Admin = () => {
       dispatch(formSliceActions.replace(data));
     }
   }, [data]);
-
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const listen = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(user.email);
-        setUser(user);
-      } else {
-        setUser(null);
-      }
-    });
-
-    return () => {
-      listen();
-    };
-  }, []);
-
-  const userSignOut = () => {
-    signOut(auth)
-      .then(() => {})
-      .catch((err) => console.log(err));
-  };
 
   const messages = useSelector((state) => state.form.messages);
 
@@ -59,22 +34,8 @@ const Admin = () => {
     await deleteDoc(doc(db, "messages", docID));
   };
 
-  return !user ? (
-    <div className="text-center mt-4">
-      You don't have permission to visit this site!
-    </div>
-  ) : (
+  return (
     <div className="p-8 flex flex-col gap-8">
-        <div className="flex gap-8">
-      <Link className="text-2xl mb-10" to={"/"}>
-        Home
-      </Link>
-      {user && (
-        <Link onClick={userSignOut} className="text-2xl mb-10" to={"/"}>
-          SingOut
-        </Link>
-      )}
-        </div>
       <div className="flex gap-8 flex-wrap justify-center">
         {messages.map((el) => (
           <div
